@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Forge Plugin</title>
+  <script src="plugin.js"></script>
+  <script>
+    var headers = { name: "Forge Plugin", version: "1.0", description: "Forge Plugin for Orion." };
+    var provider = new orion.PluginProvider(headers);
+    var serviceImpl = {
+      run: function(text) {
+        return text.split("").reverse().join("");
+      }
+    };
+    var serviceProperties = {
+      name: "Forge",
+      key: ["f", true, true]
+    };
+    provider.registerService("orion.edit.command", serviceImpl, serviceProperties);
+    provider.connect();
+  </script>
+  </head>
+  <body></body>
+  </html>
